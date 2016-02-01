@@ -26,7 +26,7 @@ namespace ListViewExample
                 Categories = (from p in db.Table<Category>() select p).ToList();
                 Categories.Insert(0, new Category { name = "None", id = -1 });
                 int currentitemid = CurrentItem != null ? CurrentItem.id : -1;
-                OpenTasks = (from p in db.Table<Task>() where p.completed == false && p.id != currentitemid && p.parentid != currentitemid select p).ToList();
+                OpenTasks = (from p in db.Table<Task>() where p.completed == false && p.id != currentitemid && (currentitemid == -1 || p.parentid != currentitemid) select p).ToList();
                 OpenTasks.Insert(0, new Task { title = "None", id = -1 });
             }
             this.InitializeComponent();

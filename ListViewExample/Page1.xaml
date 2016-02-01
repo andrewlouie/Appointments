@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:ListViewExample.Model" 
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="ToDo_List_Loaded">
     <Page.Resources>
         <ResourceDictionary Source="Styles/Styles.xaml"/>
     </Page.Resources>
@@ -21,74 +21,58 @@
             <StackPanel Margin="0,0,0,10">
                 <TextBlock Text="Description:" Style="{StaticResource SampleHeaderTextStyle}"/>
                 <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">
-                    Create an Appointment object and initialize its properties.
-                    Note that the appointment is not saved, so it will not show up in
-                    an appointment calendar.
+                    Create an Appointment or Task
                 </TextBlock>
+                <Button Name="BackButton" Content="Back" Margin="0,5,5,0" Click="BackButton_Click" Visibility="Collapsed"/>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer Name="MyScrollView" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <VariableSizedWrapGrid Orientation="Horizontal">
                         <StackPanel Margin="0,0,10,0">
                             <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Start Time:</TextBlock>
+                            <CheckBox x:Name="TimeCheckBox" Checked="TimeCheckBox_Checked" Unchecked="TimeCheckBox_UnChecked">No Date/Time</CheckBox>
                             <DatePicker x:Name="StartTimeDatePicker" Margin="0,10,0,10"/>
                             <TimePicker x:Name="StartTimeTimePicker" Margin="0,10,0,10"/>
-                            <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Title:</TextBlock>
-                            <TextBox x:Name="SubjectTextBox" Width="320" HorizontalAlignment="Left"/>
+                            <TextBlock Name="TitleLabel" Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Title:</TextBlock>
+                            <TextBox x:Name="SubjectTextBox" Width="320" HorizontalAlignment="Left" MaxLength="64"/>
                             <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Notes:</TextBlock>
                             <TextBox x:Name="DetailsTextBox" Width="320" HorizontalAlignment="Left"/>
+                            
+                        </StackPanel>
+                        <StackPanel>
                             <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Parent Task:</TextBlock>
-                            <ComboBox x:Name="DurationComboBox">
-                                
-                            </ComboBox>
+                            <ComboBox x:Name="DurationComboBox" ItemsSource="{x:Bind OpenTasks}" DisplayMemberPath="title" SelectedValuePath="id"/>
+
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Show on Live Tile:</TextBlock>
                                 <CheckBox x:Name="AllDayCheckBox" Margin="10,0,0,0"></CheckBox>
                             </StackPanel>
-                            <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Reminder:</TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox x:Name="ReminderCheckBox" Checked="ReminderCheckBox_Checked" Unchecked="ReminderCheckBox_UnChecked">Has Reminder?</CheckBox>
-                                <ComboBox x:Name="ReminderComboBox" Visibility="Collapsed" SelectedIndex="0" Margin="10,0,0,0">
-                                    <ComboBoxItem x:Name="reminder15">15 Minutes</ComboBoxItem>
-                                    <ComboBoxItem x:Name="reminder60">1 Hour</ComboBoxItem>
-                                    <ComboBoxItem x:Name="reminder1day">1 Day</ComboBoxItem>
-                                </ComboBox>
+
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="ReminderCheckBox" Checked="ReminderCheckBox_Checked" Unchecked="ReminderCheckBox_UnChecked">Reminder</CheckBox>
+                                <DatePicker x:Name="StartTimeDatePickerRem" Margin="0,10,0,10" Visibility="Collapsed"/>
+                                <TimePicker x:Name="StartTimeTimePickerRem" Margin="0,10,0,10" Visibility="Collapsed"/>
+
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
+                            
                             <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Category:</TextBlock>
-                            <ComboBox x:Name="BusyStatusComboBox">
-                                
-                            </ComboBox>
+                            <ComboBox x:Name="BusyStatusComboBox" ItemsSource="{x:Bind Categories}" DisplayMemberPath="name" SelectedValuePath="id"/>
                             <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Priority:</TextBlock>
                             <ComboBox x:Name="SensitivityComboBox">
-                                
+                                <ComboBoxItem Content="Low"/>
+                                <ComboBoxItem Content="Medium" IsSelected="True"/>
+                                <ComboBoxItem Content="High"/>
+                                <ComboBoxItem Content="Urgent"/>
                             </ComboBox>
-                            <StackPanel x:Name="InviteeStackPanel" Visibility="Collapsed">
-                                <TextBlock Style="{StaticResource BasicTextStyle}" Margin="20,0,0,10">Invitee Display Name:</TextBlock>
-                                <TextBox x:Name="InviteeDisplayNameTextBox" Width="320" Margin="20,0,0,10" HorizontalAlignment="Left"></TextBox>
-                                <TextBlock Style="{StaticResource BasicTextStyle}" Margin="20,0,0,10">Invitee Address:</TextBlock>
-                                <TextBox x:Name="InviteeAddressTextBox" Width="320" Margin="20,0,0,10" HorizontalAlignment="Left"></TextBox>
-                                <TextBlock Style="{StaticResource BasicTextStyle}" Margin="20,0,0,10">Invitee Role:</TextBlock>
-                                <ComboBox x:Name="RoleComboBox" SelectedIndex="0" Margin="20,0,0,10">
-                                    <ComboBoxItem x:Name="roleRequired">Required Attendee</ComboBoxItem>
-                                    <ComboBoxItem x:Name="roleOptional">Optional Attendee</ComboBoxItem>
-                                    <ComboBoxItem x:Name="roleResource">Resource</ComboBoxItem>
-                                </ComboBox>
-                                <TextBlock Style="{StaticResource BasicTextStyle}" Margin="20,10,0,10">Invitee Response:</TextBlock>
-                                <ComboBox x:Name="ResponseComboBox" SelectedIndex="0" Margin="20,10,0,10">
-                                    <ComboBoxItem x:Name="respNone">None</ComboBoxItem>
-                                    <ComboBoxItem x:Name="respTentative">Tentative</ComboBoxItem>
-                                    <ComboBoxItem x:Name="respAccepted">Accepted</ComboBoxItem>
-                                    <ComboBoxItem x:Name="respDeclined">Declined</ComboBoxItem>
-                                    <ComboBoxItem x:Name="respUnknown">Unknown</ComboBoxItem>
-                                </ComboBox>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="SemiBold" Margin="0,10,0,10">Completed:</TextBlock>
+                                <CheckBox x:Name="CompletedCheckBox" Margin="10,0,0,0"></CheckBox>
                             </StackPanel>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <StackPanel Orientation="Horizontal" x:Name="ButtonsStackPanel" Margin="0,10,0,10">
-                        <Button x:Name="CreateAppointmentButton" Content="Create Appointment" Margin="0,0,10,0" Click="Create_Click"/>
+                        <Button x:Name="CreateAppointmentButton" Content="Create Task" Margin="0,0,10,0" Click="Create_Click"/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

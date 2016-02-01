@@ -18,11 +18,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <SplitView x:Name="Splitter" IsPaneOpen="True" Grid.Column="1" DisplayMode="Inline" Grid.Row="1">
             <SplitView.Pane>
                 <RelativePanel Margin="10,0,0,0">
                     <TextBlock x:Name="SampleTitle" Text="Select An Option" Style="{StaticResource SampleHeaderTextStyle}" TextWrapping="Wrap" Margin="0,10,0,0"/>
-                    <ListBox x:Name="ScenarioControl" SelectionChanged="ScenarioControl_SelectionChanged"
+                    <ListBox x:Name="ScenarioControl" Tapped="ScenarioControl_Tapped"
                  SelectionMode="Single" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0"
                  VerticalAlignment="Top" RelativePanel.Below="SampleTitle" Margin="0,10,0,0" RelativePanel.Above="FooterPanel" ItemsSource="{x:Bind MenuItems}">
                         <ListBox.ItemTemplate>
@@ -31,17 +32,55 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
 
-                        <TextBlock x:Name="CategoriesTitle" Text="Categories" Style="{StaticResource SampleHeaderTextStyle}" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                        
                     </ListBox>
                     <StackPanel x:Name="FooterPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True">
-                        <StackPanel x:Name="LinksPanel" Orientation="Horizontal" Margin="10,10,0,10">
-                            <TextBlock Text="|" Style="{StaticResource SeparatorStyle}" VerticalAlignment="Center" />
-                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        <Button x:Name="AddButton" Grid.Column="0" Margin="5,5,5,5" Content="Add Category" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddButton_Click"/>
+                            <Button x:Name="RemoveButton" Grid.Column="1" Margin="5,5,5,5" Content="Remove Category" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="RemoveButton_Click"/>
+                            
+                        </Grid>
                     </StackPanel>
                 </RelativePanel>
             </SplitView.Pane>
             <SplitView.Content>
+                
                 <RelativePanel>
+                    <Grid>
+                        <Grid.RowDefinitions/>
+
+                        <ContentDialog x:Name="MyContentDialog"
+                        VerticalAlignment="Stretch"
+                        Title="Remove Category"
+                        PrimaryButtonText="Yes"
+                        IsPrimaryButtonEnabled="True"
+                        SecondaryButtonText="No"
+                        MaxWidth="{Binding ActualWidth, ElementName=pageRoot}">
+                            <StackPanel>
+                                <TextBlock Text="Are you sure?"
+                            TextWrapping="Wrap" />
+                            </StackPanel>
+
+                        </ContentDialog>
+                        <ContentDialog x:Name="MyContentDialog2"
+                        VerticalAlignment="Stretch"
+                        Title="Add Category"
+                        PrimaryButtonText="OK"
+                        IsPrimaryButtonEnabled="True"
+                        SecondaryButtonText="Cancel"
+                        MaxWidth="{Binding ActualWidth, ElementName=pageRoot}">
+                            <StackPanel>
+                                <TextBlock Text="Category Name" TextWrapping="Wrap" />
+                                <TextBox Name="CategoryName" MaxLength="64"/>
+                            </StackPanel>
+
+                        </ContentDialog>
+
+                    </Grid>
                     <Frame x:Name="ScenarioFrame" Margin="0,5,0,0" RelativePanel.AlignTopWithPanel="True" RelativePanel.Above="StatusPanel" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
                     <StackPanel x:Name="StatusPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
                         <Border x:Name="StatusBorder" Margin="0,0,0,0">
@@ -65,6 +104,7 @@
             </Border>
             <TextBlock x:Name="Header" Text="ToDo List" Style="{StaticResource TagLineTextStyle}" Margin="0,15,0,0" />
         </StackPanel>
+
     </Grid>
 
 </Page>

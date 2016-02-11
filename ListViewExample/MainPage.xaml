@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:ListViewExample.Model" 
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="ToDo_List_Loaded">
     <Page.Resources>
         <ResourceDictionary Source="Styles/Styles.xaml"/>
     </Page.Resources>
@@ -18,37 +18,37 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <SplitView x:Name="Splitter" IsPaneOpen="True" Grid.Column="1" DisplayMode="Inline" Grid.Row="1">
             <SplitView.Pane>
-                <RelativePanel Margin="10,0,0,0">
-                    <TextBlock x:Name="SampleTitle" Text="Select An Option" Style="{StaticResource SampleHeaderTextStyle}" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                <RelativePanel Margin="-1,0,0,0" Background="#FF3B5998">
+                    <TextBlock x:Name="SampleTitle" Text="" Style="{StaticResource SampleHeaderTextStyle}" TextWrapping="Wrap" Margin="0,10,-319,0" Foreground="#FFFBF9F9" TextAlignment="Center"/>
                     <ListBox x:Name="ScenarioControl" Tapped="ScenarioControl_Tapped"
                  SelectionMode="Single" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0"
                  VerticalAlignment="Top" RelativePanel.Below="SampleTitle" Margin="0,10,0,0" RelativePanel.Above="FooterPanel" ItemsSource="{x:Bind MenuItems}">
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="data:MenuItem">
-                                <TextBlock Text="{x:Bind Title}"/>
+                                <TextBlock Text="{x:Bind Title}" Foreground="#FFFFFBFB"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
 
-                        
+
                     </ListBox>
                     <StackPanel x:Name="FooterPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True">
-                        <Grid>
+                        <Grid Margin="0,0,-51,0" HorizontalAlignment="Left" Width="321">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                        <Button x:Name="AddButton" Grid.Column="0" Margin="5,5,5,5" Content="Add Category" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddButton_Click"/>
+                            <Button x:Name="AddButton" Grid.Column="0" Margin="5,5,5,5" Content="Add Category" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddButton_Click"/>
                             <Button x:Name="RemoveButton" Grid.Column="1" Margin="5,5,5,5" Content="Remove Category" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="RemoveButton_Click"/>
-                            
+
                         </Grid>
                     </StackPanel>
                 </RelativePanel>
             </SplitView.Pane>
             <SplitView.Content>
-                
+
                 <RelativePanel>
                     <Grid>
                         <Grid.RowDefinitions/>
@@ -94,15 +94,15 @@
             </SplitView.Content>
         </SplitView>
 
-        <StackPanel x:Name="HeaderPanel" Orientation="Horizontal">
-            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Grid.Row="0">
-                <ToggleButton Style="{StaticResource SymbolButton}" Click="Button_Click" VerticalAlignment="Top" Foreground="{ThemeResource ApplicationForegroundThemeBrush}">
+        <StackPanel x:Name="HeaderPanel" Orientation="Horizontal" Background="#3B5998" BorderBrush="#FF223C72" BorderThickness="0,0,0,1">
+            <Border Background="{ThemeResource AppBarItemPressedForegroundThemeBrush}" Grid.Row="0">
+                <ToggleButton Style="{StaticResource SymbolButton}" Click="Button_Click" VerticalAlignment="Top" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Width="44" Height="44">
                     <ToggleButton.Content>
-                        <FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,10,0,0"/>
+                        <FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,5,0,0" Foreground="#FF3B5998"/>
                     </ToggleButton.Content>
                 </ToggleButton>
             </Border>
-            <TextBlock x:Name="Header" Text="ToDo List" Style="{StaticResource TagLineTextStyle}" Margin="0,15,0,0" />
+            <TextBlock x:Name="Header" Text="ToDo List" Style="{StaticResource TagLineTextStyle}" Margin="10,10,0,0" Foreground="White" FontFamily="Microsoft YaHei UI" FontSize="18.667" />
         </StackPanel>
 
     </Grid>

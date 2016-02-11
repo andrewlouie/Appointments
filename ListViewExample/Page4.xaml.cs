@@ -15,27 +15,21 @@ namespace ListViewExample
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page3 : Page
+    public sealed partial class Page4 : Page
     {
         private List<Task> TaskList;
         public static MenuItem SelectedMenuItem;
+        public static DateTime taskdate;
 
-        public Page3()
+        public Page4()
         {
             using (var db = DBConnection.DbConnection)
             {
                 TaskList = new List<Task>();
                 List<Task> fulllist = (from p in db.Table<Task>() select p).ToList();
-                List<Task> list;
-                switch (SelectedMenuItem.Id)
-                {
-                    case 2: list = (from p in fulllist where p.datetime.Date == DateTime.Today && p.completed == false select p).ToList(); break;
-                    case 3: list = (from p in fulllist where p.datetime.Date == DateTime.Today.AddDays(1) && p.completed == false select p).ToList(); break;
-                    case 4: list = (from p in fulllist where p.datetime.Date < DateTime.Today.AddDays(7) && p.datetime.Date >= DateTime.Today && p.completed == false select p).ToList(); break;
-                    case 5: list = (from p in fulllist where p.completed == true select p).ToList(); break;
-                    case 6: list = (from p in fulllist select p).ToList(); break;
-                    default: list = (from p in fulllist where p.categoryid == SelectedMenuItem.category.id && p.completed == false select p).ToList(); break;
-                }
+                List<Task> list = (from p in fulllist where p.datetime.Date == taskdate select p).ToList();
+                
+
                 if (list != null)
                 {
                     foreach (Task a in list)
@@ -51,7 +45,7 @@ namespace ListViewExample
                 }
             }
             this.InitializeComponent();
-            taskTitle.Text = SelectedMenuItem.Title;
+            //taskTitle.Text = SelectedMenuItem.Title;
         }
 
         private void TaskControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,7 +54,6 @@ namespace ListViewExample
             Task s = scenarioListBox.SelectedItem as Task;
             if (scenarioListBox.SelectedItem != null)
             {
-                this.Parent.SetValue(BackgroundProperty, Background = new SolidColorBrush( Colors.Green));
                 Page1.CurrentItem = s;
                 this.Frame.Navigate(typeof(Page1));
             }

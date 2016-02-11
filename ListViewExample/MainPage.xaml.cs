@@ -1,5 +1,6 @@
 ﻿using System;
 using ListViewExample.Model;
+
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using static ListViewExample.Model.DBConnection;
@@ -25,6 +26,8 @@ namespace ListViewExample
                 tableExistsQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='Category';";
                 if (db.ExecuteScalar<string>(tableExistsQuery) == null) db.CreateTable<Category>();
             }
+
+            
             MenuItems = ListManager.GetList();
             this.InitializeComponent();
         }
@@ -86,6 +89,13 @@ namespace ListViewExample
 
             //refresh right side categories??
         }
-        
+
+        private void ToDo_List_Loaded(object sender, RoutedEventArgs e)
+        {
+            ScenarioControl.SelectedItem = ScenarioControl.Items[2];
+            MenuItem s = ScenarioControl.SelectedItem as MenuItem;
+            Page3.SelectedMenuItem = s;
+            ScenarioFrame.Navigate(typeof(Page3));
+        }
     }
 }

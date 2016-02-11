@@ -232,6 +232,22 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        }
+      },
       "sqlite-net-pcl/1.1.1": {
         "dependencies": {
           "SQLitePCL.raw": "[0.8.6, )"
@@ -1885,6 +1901,22 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.1": {
@@ -3573,6 +3605,22 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.1": {
@@ -5268,6 +5316,22 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        }
+      },
       "sqlite-net-pcl/1.1.1": {
         "dependencies": {
           "SQLitePCL.raw": "[0.8.6, )"
@@ -6954,6 +7018,22 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.1": {
@@ -8649,6 +8729,22 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        }
+      },
       "sqlite-net-pcl/1.1.1": {
         "dependencies": {
           "SQLitePCL.raw": "[0.8.6, )"
@@ -10335,6 +10431,22 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10586.0.1": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "QueryString.NET/1.0.0": {
+        "compile": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.1": {
@@ -12455,6 +12567,43 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "NotificationsExtensions.Win10/10586.0.1": {
+      "sha512": "V+80x83JYU4aN1oN9HB3OsCDmYkH38NW8V/WFY26ITTmvX6EetNhmfqI60pvmXZGiqYKMdIz2b0EBA+nSzGqFA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.dll",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.pdb",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.XML",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.dll",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.pdb",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.XML",
+        "lib/uap10.0/NotificationsExtensions.pdb",
+        "lib/uap10.0/NotificationsExtensions.pri",
+        "lib/uap10.0/NotificationsExtensions.winmd",
+        "lib/uap10.0/NotificationsExtensions.winmd.xml",
+        "lib/uap10.0/NotificationsExtensions.xml",
+        "NotificationsExtensions.Win10.nuspec",
+        "package/services/metadata/core-properties/34e3622aed2a44d984729529672fd012.psmdcp"
+      ]
+    },
+    "QueryString.NET/1.0.0": {
+      "sha512": "wmOG5qPFYH7jKp3fMXQ2VeMXTgcyoI4hwPF8AxFAyrT/uVBDe0ISzyh/iFEnwmFBUm19UgbDoFRU3o47a1/vUw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/dotnet/QueryString.NETCore.dll",
+        "lib/dotnet/QueryString.NETCore.pdb",
+        "lib/dotnet/QueryString.NETCore.XML",
+        "lib/portable-net4+sl50+win+wpa81+wp80/QueryString.Portable.dll",
+        "lib/portable-net4+sl50+win+wpa81+wp80/QueryString.Portable.pdb",
+        "lib/portable-net4+sl50+win+wpa81+wp80/QueryString.Portable.xml",
+        "package/services/metadata/core-properties/643187e148944d5892c2282c5396136a.psmdcp",
+        "QueryString.NET.nuspec"
       ]
     },
     "sqlite-net-pcl/1.1.1": {
@@ -15286,6 +15435,8 @@
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "NotificationsExtensions.Win10 >= 10586.0.1",
+      "QueryString.NET >= 1.0.0",
       "SQLite.Net.Core-PCL >= 3.1.1",
       "SQLite.Net-PCL >= 3.1.1",
       "sqlite-net-pcl >= 1.1.1"

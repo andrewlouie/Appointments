@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ListViewExample.Tile;
 
 namespace ListViewExample
 {
@@ -42,6 +43,8 @@ namespace ListViewExample
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            ToastNote.ToastNotes();
+            TileNote.Note();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -72,6 +75,8 @@ namespace ListViewExample
             // Ensure the current window is active
             Window.Current.Activate();
         }
+
+
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails

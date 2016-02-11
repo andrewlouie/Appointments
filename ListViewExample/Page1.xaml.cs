@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ListViewExample.Tile;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -76,6 +77,8 @@ namespace ListViewExample
                 else db.Update(t);
             }
             this.Frame.Navigate(typeof(Page2));
+
+            ToastNote.ToastNotes();
         }
 
         private void ReminderCheckBox_Checked(object sender, RoutedEventArgs e)

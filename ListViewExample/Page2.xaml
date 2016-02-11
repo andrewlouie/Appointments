@@ -25,14 +25,16 @@
                 </TextBlock>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-                    <VariableSizedWrapGrid Orientation="Horizontal">
-                        <CalendarView  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.Column="0" Height="332" Width="571"/>
-
-                    </VariableSizedWrapGrid>
-                </StackPanel>
-            </ScrollViewer>
+                <Grid Grid.RowSpan="2">
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                        <CalendarView Name="myCal" Width="Auto" Grid.Row="0" Grid.Column="0" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" SelectedDatesChanged="CalendarView_SelectedDatesChanged" Loaded="CalendarView_Loaded" DoubleTapped="myCal_DoubleTapped" />
+                    
+                </Grid>
         </Grid>
     </Grid>
 </Page>
